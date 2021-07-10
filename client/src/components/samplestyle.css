@@ -1,0 +1,23 @@
+.overflow-hidden {
+    overflow: hidden !important;
+}
+ .hideScrollbar::-webkit-scrollbar{
+    display: none !important; 
+   }
+
+.table-header
+   {
+    margin-left: auto !important;
+    margin-right: auto !important;
+   }
+.newtable{
+
+    background: #ffe6e6 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+ 
+
+ 
