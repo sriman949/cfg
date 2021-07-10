@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({path: './.env'});
 const cors = require('cors')
 const authRoute = require('./routes/auth');
+const acheiveRoute = require('./routes/acheivements');
 
 
 app.use(cors())
@@ -25,6 +26,7 @@ app.get('/' , (req , res) => {
 })
 
 app.use('/user' , authRoute);
+app.use('/acheive' , acheiveRoute);
 
 //backend running on PORT  7000
 const port = process.env.PORT || 7000;

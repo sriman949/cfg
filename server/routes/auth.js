@@ -24,8 +24,7 @@ router.post('/register' , async (req , res) =>{
        const salt = await bcrypt.genSalt(10);
        const hashedPassword = await bcrypt.hash( req.body.password , salt);
 
-       //create a new user
-   const user = new User({
+      const user = new User({
       name : req.body.name,
       email : req.body.email,
       password : hashedPassword,
@@ -33,8 +32,8 @@ router.post('/register' , async (req , res) =>{
       dob: req.body.dob,
       address: req.body.address,
       phone : req.body.phone, 
-      description : req.body,description,
-      enrolledAt: req.body,enrolledAt,
+      description : req.body.description,
+      enrolledAt: req.body.enrolledAt,
       programs: req.body.programs
    });
 
