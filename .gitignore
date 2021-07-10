@@ -5,4 +5,6 @@ team*.zip
 *.crt
 *.key
 *.ovpn
+*.env
+*.package-lock.json
 node_modules/
