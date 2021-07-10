@@ -13,13 +13,9 @@ const acheivementSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    status : {
-        type :String,
-        required : true
-    },
-    working_hours : {
-        type: Number,
-        required: true
+    date: {
+        type: Date,
+        default: Date.now()
     }
 })
 

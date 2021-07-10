@@ -15,6 +15,7 @@ const reportSchema = mongoose.Schema({
     },
     score : {
         type: Number,
+        default: 0
     },
     verified : {
         type :Boolean,
