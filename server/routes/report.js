@@ -6,7 +6,9 @@ var path = require('path');
 
 router.get('/:id', async(req,res)=>{
     try {
-        const data = await report_model.find();
+        const id  = req.params.id;
+        const query = {volunter_id: id};
+        const data = await report_model.find(query);
         return res.status(201).send({success: true, datasave: data});
     } catch (error) {
         return res.status(404).send({success: false, msg:error})
