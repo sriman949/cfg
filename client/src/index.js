@@ -11,7 +11,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API_CALL;
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
-  <ToastProvider>
+  <ToastProvider  placement = "bottom-center">
     <App />
   </ToastProvider>
   </BrowserRouter>
