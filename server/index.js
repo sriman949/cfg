@@ -5,7 +5,8 @@ require('dotenv').config({path: './.env'});
 const cors = require('cors')
 const authRoute = require('./routes/auth');
 const acheiveRoute = require('./routes/acheivements');
-
+const getuserRoute = require('./routes/getusers')
+const reportRoute = require('./routes/report')
 
 app.use(cors())
 app.use(express.json());
@@ -26,6 +27,8 @@ app.get('/' , (req , res) => {
 })
 
 app.use('/user' , authRoute);
+app.use('/getuser' , getuserRoute);
+app.use('/report' , reportRoute);
 app.use('/acheive' , acheiveRoute);
 
 //backend running on PORT  7000
