@@ -10,8 +10,8 @@ router.post('/register' , async (req , res) =>{
       
        
          //validate a new user
-       const {error} = registerValidation(req.body);
-       if(error) return res.status(400).send({success: false, msg: error})
+       //const {error} = registerValidation(req.body);
+       //if(error) return res.status(400).send({success: false, msg: error})
 
 
        //check if user already exists
@@ -24,18 +24,20 @@ router.post('/register' , async (req , res) =>{
        const salt = await bcrypt.genSalt(10);
        const hashedPassword = await bcrypt.hash( req.body.password , salt);
 
-      const user = new User({
-      name : req.body.name,
-      email : req.body.email,
-      password : hashedPassword,
-      role : req.body.role,
-      dob: req.body.dob,
-      address: req.body.address,
-      phone : req.body.phone, 
-      description : req.body.description,
-      enrolledAt: req.body.enrolledAt,
-      programs: req.body.programs
-   });
+      
+      
+        const  user = new User({
+            name : req.body.name,
+            email : req.body.email,
+            password : hashedPassword,
+            role : req.body.role,
+            dob: req.body.dob,
+            address: req.body.address,
+            phone : req.body.phone, 
+            description : req.body.description,
+            programs: req.body.programs
+         });
+      
 
    try {
       const savedUser = await user.save();

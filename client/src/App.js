@@ -1,4 +1,4 @@
-//import SignUp from './components/SignUp';
+import SignUp from './components/SignUp';
 import Login from './components/Login'
 import HomePage from './components/HomePage';
 import { Switch, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ function App() {
     <>
      <Switch>
         <Route path="/login" component={Login} />
-        {/* <Route path="/register" component={SignUp} /> */}
+        <Route path="/register" component={SignUp} />
         <Route exact path="/" component={HomePage} />
       </Switch>
     </>
