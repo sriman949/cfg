@@ -7,6 +7,8 @@ const authRoute = require('./routes/auth');
 const acheiveRoute = require('./routes/acheivements');
 const getuserRoute = require('./routes/getusers')
 const reportRoute = require('./routes/report')
+const announcementRoute = require('./routes/announcement')
+const postRoute = require('./routes/post')
 
 app.use(cors())
 app.use(express.json());
@@ -30,6 +32,8 @@ app.use('/user' , authRoute);
 app.use('/getuser' , getuserRoute);
 app.use('/report' , reportRoute);
 app.use('/acheive' , acheiveRoute);
+app.use('/announcement' , announcementRoute);
+app.use('/post' , postRoute);
 
 //backend running on PORT  7000
 const port = process.env.PORT || 7000;

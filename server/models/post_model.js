@@ -1,27 +1,28 @@
 const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
-    id : {
+    volunter_id : {
         type :String,
         required : true
+    },
+    title : {
+        type : String,
+        required: true
     },
     description : {
         type :String,
         required : true
     },
-    score : {
-        type: Number,
-        required: true
-    },
-    status : {
-        type :String,
-        required : true
-    },
-    working_hours : {
-        type: Number,
-        required: true
+    created_date : {
+        type : Date,
+        default : Date.now()
     }
+    // image_url : {
+    //     type: String,
+    //     data: Buffer,
+    //     contentType: String
+    // }
 })
 
 
-module.exports = mongoose.model('Acheivement' , acheivementSchema);
+module.exports = mongoose.model('Post' , PostSchema);
