@@ -79,6 +79,17 @@ router.get('/fetchMe' , verify , async (req , res) => {
    res.json(userfind);
 })
 
+router.post("/edit/:id", async (req,res) => {
+   try {
+     const data = await User.findByIdAndUpdate(req.params.id, req.body);
+     await User.save();
+     console.log(req.params.id);
+     console.log(req.body);
+     return res.status(201).send({success: true, datasave: data});
+   } catch (error) {
+      return res.status(404).send({success: false, msg:error})
+   }
+ });
 
 
 module.exports = router;

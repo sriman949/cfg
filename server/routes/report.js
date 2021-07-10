@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { Router } = require('express');
 const report_model = require('../models/report_model');
+var fs = require('fs');
+var path = require('path');
 
-router.get('/', async(req,res)=>{
+router.get('/:id', async(req,res)=>{
     try {
         const data = await report_model.find();
         return res.status(201).send({success: true, datasave: data});
