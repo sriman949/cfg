@@ -3,9 +3,11 @@ const { Router } = require('express');
 const acheivement_model = require('../models/acheivements_model');
 const user_model = require('../models/user_model');
 
-router.get('/', async(req,res)=>{
+router.get('/:id', async(req,res)=>{
     try {
-        const data = await user_model.find();
+        const id  = req.params.id;
+        const query = {volunter_id: id};
+        const data = await user_model.find(query);
         return res.status(201).send({success: true, datasave: data});
     } catch (error) {
         return res.status(404).send({success: false, msg:error})

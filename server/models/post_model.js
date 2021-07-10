@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const acheivementSchema = mongoose.Schema({
-    volunter_id : {
+const PostSchema = mongoose.Schema({
+    id : {
         type :String,
         required : true
     },
-    batch : {
+    description : {
         type :String,
         required : true
     },
