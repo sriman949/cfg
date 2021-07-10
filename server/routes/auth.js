@@ -68,7 +68,7 @@ if(!validatePass) return res.status(400).send("Password is wrong")
 
 //create and assign a token
 const token = jwt.sign({ _id: user._id} , process.env.TOKEN_SECRET)
-res.header('auth-token' ,token).send({token : token , success : true});
+res.header('auth-token' ,token).send({token : token , success : true , id: user._id});
 
 })
 
@@ -76,7 +76,7 @@ router.get('/fetchMe' , verify , async (req , res) => {
    /*res.send("some data u can access");
    res.send(req.user);*/
  const userfind = await  User.findById(req.user);
-   res.json(userfind);
+   res.json({data : userfind});
 })
 
 router.post("/edit/:id", async (req,res) => {

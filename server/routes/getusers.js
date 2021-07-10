@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Router } = require('express');
 const user_model = require('../models/user_model');
-
+const verify = require('./verifyToken');
 router.get('/', async(req,res)=>{
     try {
         const data = await user_model.find();
@@ -21,5 +21,6 @@ router.get('/:id', async(req,res)=>{
         return res.status(404).send({success: false, msg:error})
     }
 })
+
 
 module.exports = router;

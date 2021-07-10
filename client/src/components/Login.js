@@ -42,6 +42,7 @@ function Login() {
       );
       console.log(resp.data.token);
       localStorage.setItem("token", resp.data.token);
+      localStorage.setItem("userid", resp.data.id);
       if (resp.data.success === true) {
         // setLoading(false);
         localStorage.setItem("token", resp.data.token);
