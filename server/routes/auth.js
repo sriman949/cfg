@@ -10,8 +10,8 @@ router.post('/register' , async (req , res) =>{
       
        
          //validate a new user
-       const {error} = registerValidation(req.body);
-       if(error) return res.status(400).send({success: false, msg: error})
+       //const {error} = registerValidation(req.body);
+      // if(error) return res.status(400).send({success: false, msg: error})
 
 
        //check if user already exists
@@ -33,8 +33,7 @@ router.post('/register' , async (req , res) =>{
       dob: req.body.dob,
       address: req.body.address,
       phone : req.body.phone, 
-      description : req.body,description,
-      enrolledAt: req.body,enrolledAt,
+      description : req.body.description,
       programs: req.body.programs
    });
 
