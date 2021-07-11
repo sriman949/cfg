@@ -22,5 +22,15 @@ router.get('/:id', async(req,res)=>{
     }
 })
 
+router.get('/voluntercount', async(req,res)=>{
+    try {
+        const query = {role : 0};
+        const data = await user_model.find(query);
+        return res.status(201).send({success: true, datasave: data, datacount: data.length});
+    } catch (error) {
+        return res.status(404).send({success: false, msg:error})
+    }
+})
+
 
 module.exports = router;

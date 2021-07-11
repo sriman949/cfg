@@ -16,6 +16,10 @@ const PostSchema = mongoose.Schema({
     created_date : {
         type : Date,
         default : Date.now()
+    },
+    verified : {
+        type: Boolean,
+        default: 0
     }
     // image_url : {
     //     type: String,

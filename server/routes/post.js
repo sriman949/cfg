@@ -20,5 +20,17 @@ router.post('/', async(req,res)=>{
     }
 })
 
+router.post('/verifypost', async(req,res)=>{
+    try {
+        const id = req.body.id;
+        //const query = {_id: id};
+        const data = await post_model.findByIdAndUpdate(id, {verified : true});
+        //const savedata = await report_model.create(req.body);
+        return res.status(201).send({success: true, datasave: data});
+    } catch (error) {
+        return res.status(404).send({success: false, msg:error})
+    }
+})
+
 
 module.exports = router;
