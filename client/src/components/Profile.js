@@ -278,9 +278,9 @@ function Profile() {
                           </span>
                           Verification
                         </h6>
-                        {activities
+                        {allReports
                           .filter((u) => {
-                            if (u.verified === true) return u;
+                            if (u.verified === false) return u;
                           })
                           .reverse()
                           .map((u, ind) => {

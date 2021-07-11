@@ -10,6 +10,8 @@ import { useToasts } from "react-toast-notifications";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TopCards from './TopCards';
+import DoughnutChart from "./DoughnutChart";
+import GroupedBar from './GroupedBarChart';
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "20px",
@@ -95,14 +97,28 @@ function HomePage() {
         </Grid>
         <Grid item xs={1}></Grid>
         <Grid item xs={3} className={classes.griditem}>
-          <TopCards name="Hours Spent" sub="65 (Weekly)" up={true} per="9.45" role="2"/>
+       
+        <GroupedBar />
         </Grid>
         <Grid item xs={1}></Grid>
         <Grid item xs={3} className={classes.griditem}>
-          <TopCards name="Lives Impacted" sub="1500+" up={true} per="6.65" role="3"/>
+        <TopCards name="Hours Spent" sub="65 (Weekly)" up={true} per="9.45" role="2"/>
+         
         </Grid>
       </Grid>
-       
+      <Grid container spacing={2} style={{ justifyContent: "center" , marginTop : "20px"}}>
+        <Grid item xs={3} className={classes.griditem}>
+        <TopCards name="Lives Impacted" sub="1500+" up={true} per="6.65" role="3"/>
+        </Grid>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={3} className={classes.griditem}>
+        <DoughnutChart />
+        </Grid>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={3} className={classes.griditem}>
+          <TopCards name="Star Performer" sub="Shashi" up={true} per="Blood Donor" role="4"/>
+        </Grid>
+      </Grid>
       </header>
 
       <div class="feed">

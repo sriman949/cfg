@@ -5,7 +5,6 @@ import { NavDropdown, Navbar, Nav } from "react-bootstrap";
 function NavigationBar() {
   const handleLogout = () => {
     localStorage.clear();
-
     window.location.reload();
   };
   return (
@@ -26,6 +25,9 @@ function NavigationBar() {
         <Nav className="ml-auto">
           <div>
             <Nav.Link href="/profile">Profile</Nav.Link>
+          </div>
+          <div>
+            <Nav.Link href="/">Achievements</Nav.Link>
           </div>
           <div onClick={handleLogout}>
             <Nav.Link eventKey={2}>Logout</Nav.Link>
