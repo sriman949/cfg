@@ -78,22 +78,22 @@ export default function ProfilePageCard({user , role}) {
       
       <CardContent>
       <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Description :</h6>
+                    <div class="col-sm-5">
+                      <h6 class="mb-0">Description :</h6><br/>
                     </div>
-                    <div class="col-sm-9 text-secondary">{user.description}</div>
+                    <div class="col-sm-4 text-secondary">{user.description}</div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Event Date :</h6>
+                    <div class="col-sm-5">
+                      <h6 class="mb-0">Event Date :</h6><br/>
                     </div>
-                    <div class="col-sm-9 text-secondary">{user.participation_date}</div>
+                    <div class="col-sm-4 text-secondary">{user.participation_date}</div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                       <h6 class="mb-0">Working Hours :</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">{user.working_hours}</div>
+                    <div class="col-sm-4 text-secondary">{user.working_hours}</div>
                   </div>
                    
       </CardContent>
