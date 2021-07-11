@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import validator from 'validator';
-
+import logo from '../assets/logonew.png';
 function Login() {
   const history = useHistory();
 
@@ -69,7 +69,7 @@ const marginB = {
     margin: "20px auto",
     
   };
-  const avatarStyle = { backgroundColor: "#1bbd7e" };
+  const avatarStyle = { backgroundColor: "#1bbd7e" , padding : "5px" };
   const btnstyle = { margin: "20px 0" };
 
   const centerDiv = {
@@ -86,9 +86,9 @@ const marginB = {
       <Grid align="center">
         <Paper elevation={10} style={paperStyle}>
           <Grid >
-            <Avatar style={avatarStyle}>
-              <LockOutlinedIcon />
-            </Avatar>
+            
+              <img src={logo}  width='70' height='70' style={{borderRadius: '50%'}}/>
+            
             <h2>Welcome Back!</h2>
           </Grid>
           <TextField
