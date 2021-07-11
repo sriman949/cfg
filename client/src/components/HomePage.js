@@ -9,9 +9,9 @@ import PostsCard from "./PostsCard";
 import { useToasts } from "react-toast-notifications";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import TopCards from './TopCards';
+import TopCards from "./TopCards";
 import DoughnutChart from "./DoughnutChart";
-import GroupedBar from './GroupedBarChart';
+import GroupedBar from "./GroupedBarChart";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "20px",
@@ -91,34 +91,64 @@ function HomePage() {
     <div>
       <header>
         <Navbar />
-        <Grid container spacing={2} style={{ justifyContent: "center" , marginTop : "60px"}}>
-        <Grid item xs={3} className={classes.griditem}>
-          <TopCards name="Volunteers" sub="170 (Weekly)" up={true} per="6.73" role="1"/>
+        <Grid
+          container
+          spacing={2}
+          style={{ justifyContent: "center", marginTop: "60px" }}
+        >
+          <Grid item xs={3} className={classes.griditem}>
+            <TopCards
+              name="Volunteers"
+              sub="170 (Weekly)"
+              up={true}
+              per="6.73"
+              role="1"
+            />
+          </Grid>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={3} className={classes.griditem}>
+            <GroupedBar />
+          </Grid>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={3} className={classes.griditem}>
+            <TopCards
+              name="Hours Spent"
+              sub="65 (Weekly)"
+              up={true}
+              per="9.45"
+              role="2"
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3} className={classes.griditem}>
-       
-        <GroupedBar />
+        <Grid
+          container
+          spacing={2}
+          style={{ justifyContent: "center", marginTop: "20px" }}
+        >
+          <Grid item xs={3} className={classes.griditem}>
+            <TopCards
+              name="Lives Impacted"
+              sub="1500+"
+              up={true}
+              per="6.65"
+              role="3"
+            />
+          </Grid>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={3} className={classes.griditem}>
+            <DoughnutChart />
+          </Grid>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={3} className={classes.griditem}>
+            <TopCards
+              name="Star Performer"
+              sub="Shashi"
+              up={true}
+              per="Blood Donor"
+              role="4"
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3} className={classes.griditem}>
-        <TopCards name="Hours Spent" sub="65 (Weekly)" up={true} per="9.45" role="2"/>
-         
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} style={{ justifyContent: "center" , marginTop : "20px"}}>
-        <Grid item xs={3} className={classes.griditem}>
-        <TopCards name="Lives Impacted" sub="1500+" up={true} per="6.65" role="3"/>
-        </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3} className={classes.griditem}>
-        <DoughnutChart />
-        </Grid>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3} className={classes.griditem}>
-          <TopCards name="Star Performer" sub="Shashi" up={true} per="Blood Donor" role="4"/>
-        </Grid>
-      </Grid>
       </header>
 
       <div class="feed">
@@ -195,21 +225,26 @@ function HomePage() {
                 </div>
               </div>
               <h1>Posts</h1>
-              {posts.reverse().map((p, ind) => {
-                const dateString = p.created_date;
-                const formatDate = (dateString) => {
-                  const options = {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
+              {posts
+                .filter((u) => {
+                  if (u.verified === true) return u;
+                })
+                .reverse()
+                .map((p, ind) => {
+                  const dateString = p.created_date;
+                  const formatDate = (dateString) => {
+                    const options = {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    };
+                    return new Date(dateString).toLocaleDateString(
+                      undefined,
+                      options
+                    );
                   };
-                  return new Date(dateString).toLocaleDateString(
-                    undefined,
-                    options
-                  );
-                };
-                return <PostsCard dets={p} date={formatDate(dateString)}  />;
-              })}
+                  return <PostsCard dets={p} date={formatDate(dateString)} />;
+                })}
             </div>
           </div>
         </div>

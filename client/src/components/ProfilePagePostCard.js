@@ -33,29 +33,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProfilePageCard({user , role}) {
+export default function ProfilePagePostCard({user , role}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const { addToast } = useToasts();
 
 
-  const verifyPost = async() => {
-      console.log("hey");
-      try {
-          const res = await axios.post('/report/verifyreport' , {id : user._id});
-         
-          if(res.data.success){
-            addToast("Data Verified", { appearance: "success", autoDismiss: true });
-            setTimeout(() => {
-                window.location.reload();
-            },1800);
-          }
-      } catch (error) {
-        addToast("Couldnt Verify", { appearance: "error", autoDismiss: true });
-          console.log(error);
-      }
-  }
 
+  const verifyPost = async() => {
+   
+    try {
+        const res = await axios.post('/post/verifypost' , {id : user._id});
+       
+        if(res.data.success){
+          addToast("Post Verified", { appearance: "success", autoDismiss: true });
+          setTimeout(() => {
+              window.location.reload();
+          },1800);
+        }
+    } catch (error) {
+      addToast("Couldnt Verify", { appearance: "error", autoDismiss: true });
+        console.log(error);
+    }
+}
   
   return (
     <Card >
@@ -80,21 +80,15 @@ export default function ProfilePageCard({user , role}) {
       <CardContent>
       <div class="row">
                     <div class="col-sm-5">
+                      <h6 class="mb-0">Title :</h6><br/>
+                    </div>
+                    <div class="col-sm-4 text-secondary">{user.title}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
                       <h6 class="mb-0">Description :</h6><br/>
                     </div>
                     <div class="col-sm-4 text-secondary">{user.description}</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <h6 class="mb-0">Event Date :</h6><br/>
-                    </div>
-                    <div class="col-sm-4 text-secondary">{user.participation_date}</div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <h6 class="mb-0">Working Hours :</h6>
-                    </div>
-                    <div class="col-sm-4 text-secondary">{user.working_hours}</div>
                   </div>
                    
       </CardContent>

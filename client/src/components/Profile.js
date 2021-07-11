@@ -9,7 +9,7 @@ import { TextField } from "@material-ui/core";
 import { useToasts } from "react-toast-notifications";
 import Navbar from './Navbar';
 import { useHistory } from "react-router-dom";
-
+import ProfilePagePostCard from './ProfilePagePostCard';
 
 const ModalforUpload = ({ userid }) => {
   const [open, setOpen] = useState(false);
@@ -91,6 +91,19 @@ function Profile() {
     }
   };
 
+  const [allPosts, setAllPosts] = useState([]);
+  const getAllPosts = async () => {
+    try {
+      console.log("getAllPosts");
+      const resp = await axios.get(`/post`);
+      console.log(resp.data.datasave);
+      setAllPosts(resp.data.datasave);
+      //setLoadisetng(false);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
 
   const history = useHistory();
   const checkAuth = () => {
@@ -103,6 +116,7 @@ function Profile() {
     checkAuth();
     await getUser();
     await getAllReports();
+    await getAllPosts();
   }, []);
 
   const [announcement, setAnnouncement] = useState("");
@@ -274,11 +288,11 @@ function Profile() {
                       <div class="card-body">
                         <h6 class="d-flex align-items-center mb-3">
                           <span style={{ color: "green", marginRight: "7px" }}>
-                            Pending Admin{" "}
+                            Pending {" "}
                           </span>
-                          Verification
+                          Post Verification
                         </h6>
-                        {allReports
+                        {allPosts
                           .filter((u) => {
                             if (u.verified === false) return u;
                           })
@@ -286,7 +300,7 @@ function Profile() {
                           .map((u, ind) => {
                             return (
                               <div style={{ marginBottom: "10px" }} key={ind}>
-                                <ProfilePageCard user={u} role={0} />
+                                <ProfilePagePostCard user={u} role={1} />
                               </div>
                             );
                           })}
